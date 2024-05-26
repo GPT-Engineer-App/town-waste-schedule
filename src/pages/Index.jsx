@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, VStack, Select, Box, Grid, GridItem, Button } from "@chakra-ui/react";
+import { Container, Text, VStack, Select, Box, Grid, GridItem, Button, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 
 const garbageCollectionData = {
   町A: {
-    可燃ごみ: [1, 8, 15, 22, 29],
-    プラスチック製容器包装: [2, 16, 30],
-    紙類: [3, 17],
-    金物・ガラス類: [4, 18],
-    埋立ごみ: [5, 19],
-    水銀ごみ: [6, 20],
-    粗大ごみ: [7, 21],
-    ペットボトル: [8, 22],
+    可燃ごみ: [5, 12, 19, 26],
+    プラスチック製容器包装: [6, 20],
+    紙類: [7, 21],
+    金物・ガラス類: [8, 22],
+    埋立ごみ: [9, 23],
+    水銀ごみ: [10, 24],
+    粗大ごみ: [11, 25],
+    ペットボトル: [12, 26],
   },
   町B: {
     燃えるごみ: [4, 11, 18, 25],
@@ -58,6 +59,9 @@ const Index = () => {
         {selectedTown && (
           <Box>
             <Text fontSize="xl">{selectedTown}のごみ収集日</Text>
+            <Link as={RouterLink} to={`/pdf-viewer/${selectedTown}`} color="teal.500">
+              PDFを表示
+            </Link>
             <Grid templateColumns="repeat(7, 1fr)" gap={4}>
               {[...Array(daysInMonth)].map((_, day) => {
                 const date = day + 1;
