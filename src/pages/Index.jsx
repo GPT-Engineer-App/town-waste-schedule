@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Text, VStack, Select, Box, Grid, GridItem, Button } from "@chakra-ui/react";
+import { Container, Text, VStack, Select, Box, Grid, GridItem, Button, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 
 const garbageCollectionData = {
@@ -58,6 +59,9 @@ const Index = () => {
         {selectedTown && (
           <Box>
             <Text fontSize="xl">{selectedTown}のごみ収集日</Text>
+            <Link as={RouterLink} to={`/pdf-viewer/${selectedTown}`} color="teal.500">
+              PDFを表示
+            </Link>
             <Grid templateColumns="repeat(7, 1fr)" gap={4}>
               {[...Array(daysInMonth)].map((_, day) => {
                 const date = day + 1;
